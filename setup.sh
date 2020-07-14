@@ -1,6 +1,6 @@
 #!/bin/sh
 sudo xbps-install -S
-sudo xbps-install git; sudo xbps-install vim; sudo xbps-install nano; sudo xbps-install evince; sudo xbps-install bash;
+sudo xbps-install git; sudo xbps-install vim; sudo xbps-install nano; sudo xbps-install evince; sudo xbps-install bash; sudo xbps-install wget
 
 
 cd ~/Desktop
