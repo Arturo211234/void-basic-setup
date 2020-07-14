@@ -1,5 +1,7 @@
 #!/bin/sh
 sudo xbps-install -S
+sudo xbps-install -Syu
+sudo xbps-install -S
 sudo xbps-install git vim nano evince bash wget
 
 sudo xbps-install subversion yasm cvs cmake ragel gcc automake make
