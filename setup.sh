@@ -1,7 +1,6 @@
 #!/bin/sh
 sudo xbps-install -S
 sudo xbps-install -Syu
-sudo xbps-install -S
 sudo xbps-install git vim nano evince bash wget
 
 cd ~/Desktop
@@ -11,6 +10,7 @@ cd stuff
 git clone https://github.com/cbrnix/Flatery.git
 
 sudo mv ~/Desktop/stuff/Flatery/Flatery-Dark /usr/share/icons
+rm -rf Flatery
 
 clear; clear;
 
