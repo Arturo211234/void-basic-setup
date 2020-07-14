@@ -16,6 +16,6 @@ clear; clear;
 
 git clone git://git.videolan.org/vlc/vlc-3.0.git
 
-cd vlc-3.0
+cd vlc-3.0/contrib/
 
 echo "Now just use the Flatery Dark theme in the settings, and ur all good to go"
