@@ -13,4 +13,6 @@ sudo mv ~/Desktop/stuff/Flatery/Flatery-Dark /usr/share/icons
 
 clear; clear;
 
+wget http://get.videolan.org/vlc/3.0.11/vlc-3.0.11.tar.xz
+
 echo "Now just use the Flatery Dark theme in the settings, and ur all good to go"
