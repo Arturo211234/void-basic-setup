@@ -1,7 +1,7 @@
 #!/bin/sh
 sudo xbps-install -S
 sudo xbps-install -Syu
-sudo xbps-install git vim nano evince bash wget tcc
+sudo xbps-install git vim nano evince bash wget tcc mpv
 
 cd ~/Desktop
 mkdir stuff
