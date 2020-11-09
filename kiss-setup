@@ -1,3 +1,5 @@
+#!/bin/sh
+cd /
 mkdir repos
 cd repos
 git clone https://github.com/periish/kiss-all
@@ -30,7 +32,42 @@ cd /var/db/kiss/repo
 git config merge.verifySignatures true
 kiss update
 cd /var/db/kiss/installed && kiss build *
-kiss b e2fsprogs dosfstools xfsprogs util-linux eudev wpa_supplicant dhcpcd nano
-kiss i e2fsprogs dosfstools xfsprogs util-linux eudev wpa_supplicant dhcpcd nano
+kiss b e2fsprogs dosfstools xfsprogs util-linux eudev wpa_supplicant dhcpcd nano libelf ncurses perl
+kiss i e2fsprogs dosfstools xfsprogs util-linux eudev wpa_supplicant dhcpcd nano libelf ncurses perl
 echo HOSTNAME > /etc/hostname
 nano /etc/hosts
+cd /repos/lin-kern
+wget https://git.kernel.org/torvalds/t/linux-5.10-rc3.tar.gz
+tar -xf linux-5.10-rc3.tar.gz
+rm linux-5.10-rc3.tar.gz
+cd linux-5.10-rc3
+make defconfig
+make menuconfig
+cp .config /repos
+make -j2
+kiss b grub efibootmgr
+kiss i grub efibootmgr
+make install
+mv /boot/vmlinuz /boot/vmlinuz-5.10-rc3
+mv /boot/System.map /boot/System.map-5.10-rc3
+cd /repos/lin-kern
+wget https://raw.githubusercontent.com/Arturo211234/void-basic-setup/master/genfstab
+chmod +x genfstab
+./genfstab -U / >> /etc/fstab
+grub-install --target=x86_64-efi --efi-directory=/dev/sda1 --bootloader-id=kiss
+grub-mkconfig -o /boot/grub/grub.cfg
+kiss b baseinit
+kiss i baseinit
+adduser aslikr
+kiss b xorg-server xinit xf86-input-libinput liberation-fonts dwm dmenu pulseaudio
+addgroup aslikr video
+addgroup aslikr audio
+cd /repos
+mkdir myrepo
+cd myrepo
+wget https://dl.suckless.org/st/st-0.8.4.tar.gz
+tar -xf st-0.8.4.tar.gz
+rm st-0.8.4.tar.gz
+cd st-0.8.4
+mv config.def.h config.h
+make -j2
