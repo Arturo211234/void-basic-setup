@@ -60,6 +60,7 @@ kiss b baseinit
 kiss i baseinit
 adduser aslikr
 kiss b xorg-server xinit xf86-input-libinput liberation-fonts dwm dmenu pulseaudio
+kiss i xorg-server xinit xf86-input-libinput liberation-fonts dwm dmenu pulseaudio
 addgroup aslikr video
 addgroup aslikr audio
 cd /repos
