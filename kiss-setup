@@ -1,0 +1,36 @@
+mkdir repos
+cd repos
+git clone https://github.com/periish/kiss-all
+git clone https://github.com/kisslinux/repo
+git clone https://github.com/kisslinux/community
+rm -rf community/community/libsndfile
+mkdir lin-kern
+export KISS_PATH=''
+KISS_PATH=$KISS_PATH:/repos/community/community
+KISS_PATH=$KISS_PATH:/repos/repo/core
+KISS_PATH=$KISS_PATH:/repos/repo/testing
+KISS_PATH=$KISS_PATH:/repos/repo/xorg
+KISS_PATH=$KISS_PATH:/repos/repo/extra
+KISS_PATH=$KISS_PATH:/repos/kiss-all/audio
+KISS_PATH=$KISS_PATH:/repos/kiss-all/cmd-utils
+KISS_PATH=$KISS_PATH:/repos/kiss-all/containers
+KISS_PATH=$KISS_PATH:/repos/kiss-all/dbus
+KISS_PATH=$KISS_PATH:/repos/kiss-all/dbus
+KISS_PATH=$KISS_PATH:/repos/kiss-all/misc
+KISS_PATH=$KISS_PATH:/repos/kiss-all/ricing
+KISS_PATH=$KISS_PATH:/repos/kiss-all/xfce4
+export CFLAGS="-O2 -march=native -pipe"
+export CXXFLAGS="$CFLAGS"
+export MAKEFLAGS="-j2"
+kiss b gnupg1
+kiss i gnupg1
+gpg --keyserver keys.gnupg.net --recv-key 46D62DD9F1DE636E
+echo trusted-key 0x46d62dd9f1de636e >>/root/.gnupg/gpg.conf
+cd /var/db/kiss/repo
+git config merge.verifySignatures true
+kiss update
+cd /var/db/kiss/installed && kiss build *
+kiss b e2fsprogs dosfstools xfsprogs util-linux eudev wpa_supplicant dhcpcd nano
+kiss i e2fsprogs dosfstools xfsprogs util-linux eudev wpa_supplicant dhcpcd nano
+echo HOSTNAME > /etc/hostname
+nano /etc/hosts
