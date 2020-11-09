@@ -17,7 +17,6 @@ KISS_PATH=$KISS_PATH:/repos/kiss-all/audio
 KISS_PATH=$KISS_PATH:/repos/kiss-all/cmd-utils
 KISS_PATH=$KISS_PATH:/repos/kiss-all/containers
 KISS_PATH=$KISS_PATH:/repos/kiss-all/dbus
-KISS_PATH=$KISS_PATH:/repos/kiss-all/dbus
 KISS_PATH=$KISS_PATH:/repos/kiss-all/misc
 KISS_PATH=$KISS_PATH:/repos/kiss-all/ricing
 KISS_PATH=$KISS_PATH:/repos/kiss-all/xfce4
